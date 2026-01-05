@@ -1,7 +1,8 @@
+// Fortune Weather App - Main JavaScript File
 // IMPORTANT: Replace this with your own API key from https://openweathermap.org/api
 const apiKey = "49914b80874f44e48ec15a7026a654a4";
 
-// Tab switching
+// Tab switching functionality
 document.querySelectorAll('.tab-btn').forEach(btn => {
     btn.addEventListener('click', () => {
         const tab = btn.dataset.tab;
@@ -10,7 +11,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
         document.querySelectorAll('.search-content').forEach(c => c.classList.remove('active'));
         
         btn.classList.add('active');
-        document.getElementById(${tab}-search).classList.add('active');
+        document.getElementById(`${tab}-search`).classList.add('active');
     });
 });
 
@@ -24,8 +25,8 @@ function searchByCity() {
         return;
     }
     
-    const query = country ? ${city},${country} : city;
-    fetchWeather(q=${query});
+    const query = country ? `${city},${country}` : city;
+    fetchWeather(`q=${query}`);
 }
 
 // Search by coordinates
@@ -38,7 +39,7 @@ function searchByCoordinates() {
         return;
     }
     
-    fetchWeather(lat=${lat}&lon=${lon});
+    fetchWeather(`lat=${lat}&lon=${lon}`);
 }
 
 // Search Nigerian city
@@ -50,15 +51,15 @@ function searchNigerianCity() {
         return;
     }
     
-    fetchWeather(q=${city},NG);
+    fetchWeather(`q=${city},NG`);
 }
 
-// Quick search
+// Quick search for popular cities
 function quickSearch(city) {
-    fetchWeather(q=${city},NG);
+    fetchWeather(`q=${city},NG`);
 }
 
-// Fetch weather data
+// Fetch weather data from API
 async function fetchWeather(query) {
     const display = document.getElementById('weatherDisplay');
     display.innerHTML = '<div class="loading">⏳ Loading weather data...</div>';
@@ -66,7 +67,7 @@ async function fetchWeather(query) {
     try {
         // Fetch current weather
         const currentResponse = await fetch(
-            https://api.openweathermap.org/data/2.5/weather?${query}&appid=${apiKey}&units=metric
+            `https://api.openweathermap.org/data/2.5/weather?${query}&appid=${apiKey}&units=metric`
         );
         
         if (!currentResponse.ok) {
@@ -78,7 +79,7 @@ async function fetchWeather(query) {
         
         // Fetch 5-day forecast
         const forecastResponse = await fetch(
-            https://api.openweathermap.org/data/2.5/forecast?${query}&appid=${apiKey}&units=metric
+            `https://api.openweathermap.org/data/2.5/forecast?${query}&appid=${apiKey}&units=metric`
         );
         
         if (!forecastResponse.ok) {
@@ -94,7 +95,7 @@ async function fetchWeather(query) {
     }
 }
 
-// Display weather
+// Display weather information
 function displayWeather(current, forecast) {
     const display = document.getElementById('weatherDisplay');
     
@@ -151,7 +152,7 @@ function displayWeather(current, forecast) {
                     </div>
                     <div class="detail-item">
                         <div class="detail-label">Max Temp</div>
-                        <div class="detail-value">${Math.round(current.main.temp_max)}°C</div>
+                        <div class="detail-value">${Math.round(current.main.temp_max)}°C>
                     </div>
                 </div>
             </div>
@@ -192,10 +193,10 @@ function displayWeather(current, forecast) {
     display.innerHTML = html;
 }
 
-// Show error
+// Show error message
 function showError(message) {
     const display = document.getElementById('weatherDisplay');
-    display.innerHTML = <div class="error">❌ ${message}</div>;
+    display.innerHTML = `<div class="error">❌ ${message}</div>`;
 }
 
 // Load default weather for Lagos on page load
@@ -203,7 +204,7 @@ window.addEventListener('load', () => {
     fetchWeather('q=Lagos,NG');
 });
 
-// Enter key support
+// Enter key support for inputs
 document.getElementById('cityInput').addEventListener('keypress', (e) => {
     if (e.key === 'Enter') searchByCity();
 });
