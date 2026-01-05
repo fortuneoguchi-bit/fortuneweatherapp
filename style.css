@@ -29,13 +29,16 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
 }
 
-.owner {
-	font-weight: 900;
-}
-
 header p {
     font-size: 1.1em;
     opacity: 0.9;
+}
+
+.tagline {
+    font-size: 0.95em !important;
+    margin-top: 8px;
+    font-style: italic;
+    opacity: 0.85 !important;
 }
 
 .search-section {
@@ -311,6 +314,25 @@ button.search-btn:hover {
     border-radius: 10px;
     margin: 20px 0;
     text-align: center;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    padding: 30px 20px;
+    margin-top: 40px;
+    animation: fadeInUp 1s ease;
+}
+
+footer p {
+    margin: 8px 0;
+    opacity: 0.9;
+    font-size: 0.95em;
+}
+
+footer p:first-child {
+    font-weight: 600;
+    font-size: 1em;
 }
 
 @keyframes fadeInDown {
