@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Advanced Weather App - Nigeria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌦️ Advanced Weather App</h1>
+            <h1 class="owner">By Fortune</h1>
+            <p>Real-time weather information for Nigeria and worldwide</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-tabs">
+                <button class="tab-btn active" data-tab="city">Search by City</button>
+                <button class="tab-btn" data-tab="coordinates">Search by Coordinates</button>
+                <button class="tab-btn" data-tab="nigeria">Nigerian Cities</button>
+            </div>
+
+            <div class="search-content active" id="city-search">
+                <div class="input-group">
+                    <input type="text" id="cityInput" placeholder="Enter city name (e.g., Lagos, Abuja)">
+                    <input type="text" id="countryInput" placeholder="Country code (optional, e.g., NG)">
+                    <button class="search-btn" onclick="searchByCity()">Search</button>
+                </div>
+            </div>
+
+            <div class="search-content" id="coordinates-search">
+                <div class="input-group">
+                    <input type="text" id="latInput" placeholder="Latitude (e.g., 6.5244)">
+                    <input type="text" id="lonInput" placeholder="Longitude (e.g., 3.3792)">
+                    <button class="search-btn" onclick="searchByCoordinates()">Search</button>
+                </div>
+            </div>
+
+            <div class="search-content" id="nigeria-search">
+                <div class="input-group">
+                    <select id="nigeriaSelect">
+                        <option value="">Select a Nigerian city</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Abuja">Abuja</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Ibadan">Ibadan</option>
+                        <option value="Port Harcourt">Port Harcourt</option>
+                        <option value="Benin City">Benin City</option>
+                        <option value="Kaduna">Kaduna</option>
+                        <option value="Enugu">Enugu</option>
+                        <option value="Aba">Aba</option>
+                        <option value="Onitsha">Onitsha</option>
+                        <option value="Warri">Warri</option>
+                        <option value="Jos">Jos</option>
+                        <option value="Calabar">Calabar</option>
+                        <option value="Maiduguri">Maiduguri</option>
+                        <option value="Akure">Akure</option>
+                    </select>
+                    <button class="search-btn" onclick="searchNigerianCity()">Get Weather</button>
+                </div>
+                <div class="quick-cities">
+                    <span style="color: #666; font-weight: bold;">Quick Access:</span>
+                    <div class="city-chip" onclick="quickSearch('Lagos')">Lagos</div>
+                    <div class="city-chip" onclick="quickSearch('Abuja')">Abuja</div>
+                    <div class="city-chip" onclick="quickSearch('Kano')">Kano</div>
+                    <div class="city-chip" onclick="quickSearch('Port Harcourt')">Port Harcourt</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="weatherDisplay"></div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
